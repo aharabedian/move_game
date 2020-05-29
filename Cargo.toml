@@ -1,7 +1,7 @@
 [package]
 name = "move_game"
 version = "0.1.0"
-authors = []
+authors = ["Aaron Harabedian", "Ben Huber"]
 edition = "2018"
 
 [dependencies]
