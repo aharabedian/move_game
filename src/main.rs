@@ -8,10 +8,11 @@ use amethyst::{
         RenderingBundle,
     },
     utils::application_root_dir,
+    core::transform::TransformBundle,
 };
 
-pub struct Pong;
-impl SimpleState for Pong {}
+mod pong;
+use crate::pong::Pong;
 
 fn main() -> amethyst::Result<()> {
     // Setup logger
@@ -30,7 +31,9 @@ fn main() -> amethyst::Result<()> {
                     .with_clear([0.25, 0.05, 0.3, 1.0]),
             )
             .with_plugin(RenderFlat2D::default()),
-        )?;
+        )?
+        // Add transform bundle which tracks entity positions
+        .with_bundle(TransformBundle::new())?;
 
     let mut game = Application::new(assets_dir, Pong, game_data)?;
 
